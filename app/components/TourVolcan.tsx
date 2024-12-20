@@ -4,28 +4,36 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
+import volcan1 from '../assets/volcan-1.jpg'
+import volcan2 from '../assets/volcan-2.jpg'
+import volcan3 from '../assets/volcan-3.jpg'
+import volcan4 from '../assets/volcan-4.jpg'
+import volcan5 from '../assets/volcan-5.jpg'
+import volcan6 from '../assets/volcan-6.jpg'
+import volcan7 from '../assets/volcan-7.jpg'
+import volcan8 from '../assets/volcan-8.jpg'
+import volcan9 from '../assets/volcan-9.jpg'
 
 const tours = [
   { 
     id: 1, 
     title: "Tour 1", 
     description: "Experience the beauty of our volcanic landscapes.",
-    images: ["/assets/volcan-miravalles-1.jpg?height=400&width=600", "/placeholder.svg?height=400&width=600", "/placeholder.svg?height=400&width=600"]
+    images: [volcan1, volcan2, volcan3]
   },
   { 
     id: 2, 
     title: "Tour 2", 
     description: "Discover hidden gems in the heart of the volcano.",
-    images: ["/placeholder.svg?height=400&width=600", "/placeholder.svg?height=400&width=600", "/placeholder.svg?height=400&width=600"]
+    images: [volcan4, volcan5, volcan6]
   },
   { 
     id: 3, 
     title: "Tour 3", 
     description: "Adventure awaits in our thrilling volcano tour.",
-    images: ["/placeholder.svg?height=400&width=600", "/placeholder.svg?height=400&width=600", "/placeholder.svg?height=400&width=600"]
+    images: [volcan7, volcan8, volcan9]
   },
 ]
 
@@ -37,7 +45,7 @@ function ImageSlider({ images }: { images: string[] }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 10000);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, [images.length]);
@@ -70,14 +78,14 @@ export function TourVolcan() {
         {tours.map((tour) => (
           <Card 
             key={tour.id} 
-            className="bg-white border-[#2F4F2F] overflow-hidden h-[80vh] flex flex-col"
+            className="bg-white overflow-hidden h-[80vh] flex flex-col"
             onMouseEnter={() => setHoveredTour(tour.id)}
             onMouseLeave={() => setHoveredTour(null)}
           >
             <CardContent className="p-6 flex flex-col h-full relative">
               <h3 className="text-2xl font-semibold text-[#2F4F2F] mb-4">{tour.title}</h3>
               <div className="flex-grow aspect-video bg-[#1C1C1C]/10 rounded mb-4 overflow-hidden">
-                <ImageSlider images={tour.images} />
+                <ImageSlider images={tour.images.map(img => img.src)} />
               </div>
               <p className="text-[#1C1C1C] mb-4">{tour.description}</p>
               <form 
@@ -97,7 +105,32 @@ export function TourVolcan() {
                   <Input placeholder="Teléfono" className={cn(inputClass, "border-[#2F4F2F]")} />
                 </div>
                 <div className="px-4">
-                  <Textarea placeholder="Dejenos un mensaje" className={cn(inputClass, "border-[#2F4F2F] flex-grow")} />
+                  <h4 className="text-sm font-medium mb-2 text-[#2F4F2F]">Fecha</h4>
+                  <div className="grid grid-cols-7 gap-1">
+                    {[...Array(7)].map((_, index) => {
+                      const date = new Date();
+                      date.setDate(date.getDate() + index);
+                      const day = date.getDate();
+                      const month = date.toLocaleString('default', { month: 'short' });
+                      
+                      let bgColor = "bg-gray-100";
+                      if (index < 2) {
+                        bgColor = "bg-red-100 text-red-800";
+                      } else if (index >= 2 && index < 7) {
+                        bgColor = "bg-green-100 text-green-800";
+                      }
+
+                      return (
+                        <button
+                          key={index}
+                          className={`${bgColor} rounded p-2 text-sm hover:opacity-80 transition-opacity flex flex-col items-center`}
+                        >
+                          <span className="text-xs">{month}</span>
+                          <span>{day}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
                 <div className="px-4">
                   <Button className="w-full bg-[#2F4F2F] hover:bg-[#1C1C1C] transition-all duration-300 ease-in-out transform hover:scale-105">

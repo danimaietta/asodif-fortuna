@@ -1,10 +1,7 @@
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { Footer } from "../components/Footer"
+import logo from '../assets/logo.png'
 import microempresa1 from '../assets/microempresa-1.jpg'
 import microempresa2 from '../assets/microempresa-2.jpg'
 import microempresa3 from '../assets/microempresa-3.jpg'
@@ -20,9 +17,6 @@ import microempresa12 from '../assets/microempresa-12.jpg'
 import microempresa13 from '../assets/microempresa-13.jpg'
 import microempresa14 from '../assets/microempresa-14.jpg'
 import microempresa15 from '../assets/microempresa-15.jpg'
-
-
-const inputClass = "border-[#2F4F2F] transition-all duration-300 ease-in-out hover:border-[#1C1C1C] focus:border-[#1C1C1C] focus:ring-2 focus:ring-[#1C1C1C]"
 
 const images = [
   microempresa1,
@@ -43,18 +37,29 @@ const images = [
 ]
 
 export function Microempresa() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section className="space-y-12">
       <div className="text-center space-y-4">
-        <div className="h-12 w-32 mx-auto bg-[#2F4F2F] rounded" />
+        <div className="relative">
+          <p className="absolute -top-8 left-1/2 -translate-x-1/2 text-[#2F4F2F] font-medium text-sm z-10">
+            Discover the beauty and culture of Fortuna Guanacaste through our local microenterprises
+          </p>
+          <Image 
+              className="h-12 w-48 mx-auto bg-[#2F4F2F] rounded relative"
+              src={logo} 
+              alt="logo" 
+              width={250}
+              height={100} 
+          />
+        </div>
         <h2 className="text-2xl font-bold text-[#2F4F2F]">Microempresa Fortuna Guanacaste</h2>
         <p className="max-w-3xl mx-auto text-[#1C1C1C]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Lorem ipsum odor amet, consectetuer adipiscing elit. Condimentum nisl tincidunt nam tincidunt sem. Dis risus ut suspendisse mus ullamcorper. Ultricies aliquet mus euismod felis vitae. Dis ultricies consequat class sociosqu; sem ultrices phasellus quam litora. Cursus tellus nascetur malesuada viverra pharetra. Cras eleifend auctor ante malesuada fringilla volutpat lacinia senectus augue. Litora pharetra natoque cras, elementum vestibulum iaculis.
+
+Faucibus at rutrum maecenas iaculis molestie eros tortor. Maximus eros sociosqu curae conubia imperdiet pellentesque laoreet a nunc. Ultrices pretium maecenas augue aenean hendrerit. Eget eget semper placerat egestas nam scelerisque dignissim ante. Parturient habitasse consectetur fermentum dui eu scelerisque est. Ad tortor malesuada euismod quis per massa velit fames consectetur. Tristique odio vivamus ac laoreet varius facilisi facilisis. Magna feugiat convallis congue magna duis non fermentum. Dis platea integer molestie litora leo elit erat et curabitur?
         </p>
       </div>
 
@@ -94,11 +99,19 @@ export function Microempresa() {
               ←
             </button>
             <div className="relative aspect-video flex-1 scale-55">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin" />
+              </div>
               <Image
                 src={images[currentImageIndex]}
                 alt="Modal view"
                 fill
                 className="object-contain"
+                onLoadingComplete={(img) => {
+                  img.classList.remove('opacity-0');
+                  img.classList.add('opacity-100');
+                }}
+                loading="eager"
               />
             </div>
             <button
@@ -111,25 +124,7 @@ export function Microempresa() {
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 pt-12">
-        <div className="grid grid-cols-3 gap-4 col-span-3">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <div key={i} className="aspect-video bg-[#2F4F2F]/20 rounded" />
-          ))}
-        </div>
-        <Card className="bg-[#2F4F2F]">
-          <CardContent className="p-4 space-y-4">
-            <Input placeholder="Nombre" className={cn(inputClass, "bg-white/10 text-white placeholder:text-white/70")} />
-            <Input placeholder="Correo" className={cn(inputClass, "bg-white/10 text-white placeholder:text-white/70")} />
-            <Input placeholder="Teléfono" className={cn(inputClass, "bg-white/10 text-white placeholder:text-white/70")} />
-            <Textarea placeholder="Dejenos un mensaje" className={cn(inputClass, "bg-white/10 text-white placeholder:text-white/70")} />
-            <Button variant="secondary" className="w-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-white hover:text-[#2F4F2F]">
-              Mail
-            </Button>
-          </CardContent>
-        </Card>
-      </footer>
+      <Footer />
     </section>
   )
 } 
