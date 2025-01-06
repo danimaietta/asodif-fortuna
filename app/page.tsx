@@ -35,9 +35,9 @@ export default function Home() {
   const scrollWindow = (section: string) => () => {
     let scrollPosition
     if(section === 'fortuna') scrollPosition = 0
-    if(section === 'tour') scrollPosition = 1100
-    if(section === 'microempresa') scrollPosition = 2000
-    if(section === 'contacto' ) scrollPosition = 3000
+    if(section === 'tour') scrollPosition = 1300
+    if(section === 'microempresa') scrollPosition = 2200
+    if(section === 'contacto' ) scrollPosition = 3600
     scrollTo({ top: scrollPosition, behavior: 'smooth' });
   }
 
