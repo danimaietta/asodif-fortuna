@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import fondo from '@assets/fondo3.jpg'
 import { FortunaGuanacaste } from "./components/FortunaGuanacaste"
 import { TourVolcan } from "./components/TourVolcan"
 import { Microempresa } from "./components/Microempresa"
@@ -8,7 +9,6 @@ import { Header } from "./components/Header"
 import { Contacto } from '@components/Contacto'
 import useWindowSize from '@hooks/useWindowSize'
 import { HEADER_OPTIONS } from "@constants/data"
-
 
 export default function Home() {
 
@@ -18,12 +18,11 @@ export default function Home() {
 
   useEffect(() => {
     document.addEventListener('scroll', () => {
-        console.log(window.scrollY)
-        if(window.scrollY < height){
+        if(scrollY < height){
             setSelected('fortuna')
-        } else if(window.scrollY <= totalHeight - (height * 2)){
+        } else if(scrollY <= totalHeight - (height * 2)){
             setSelected('tour')
-        } else if(window.scrollY <= totalHeight - (height)){
+        } else if(scrollY <= totalHeight - (height)){
             setSelected('microempresa')
         } else {
             setSelected('contacto')
@@ -42,8 +41,22 @@ export default function Home() {
     scrollTo({ top: scrollPosition, behavior: 'smooth' });
   }
 
+  /*
+    Add this property to div when we have a proper image
+
+      style={{
+        backgroundImage: `url(${fondo.src})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+        
+  */
+
   return (
-    <div className="min-h-[350vh] bg-white">
+    <div 
+      className="min-h-[350vh]"
+    >
       <Header selected={selected} scrollWindow={scrollWindow}/>
       <main className="container mx-auto p-4 space-y-12">
         <FortunaGuanacaste />
