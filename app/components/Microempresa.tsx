@@ -1,7 +1,39 @@
 import Image from "next/image"
+import logo from '../../app/assets/logo.png'
+import microempresa1 from '../../app/assets/microempresa-1.jpg'
+import microempresa2 from '../../app/assets/microempresa-2.jpg'
+import microempresa3 from '../../app/assets/microempresa-3.jpg'
+import microempresa4 from '../../app/assets/microempresa-4.jpg'
+import microempresa5 from '../../app/assets/microempresa-5.jpg'
+import microempresa6 from '../../app/assets/microempresa-6.jpg'
+import microempresa7 from '../../app/assets/microempresa-7.jpg'
+import microempresa8 from '../../app/assets/microempresa-8.jpg'
+import microempresa9 from '../../app/assets/microempresa-9.jpg'
+import microempresa10 from '../../app/assets/microempresa-10.jpg'
+import microempresa11 from '../../app/assets/microempresa-11.jpg'
+import microempresa12 from '../../app/assets/microempresa-12.jpg'
+import microempresa13 from '../../app/assets/microempresa-13.jpg'
+import microempresa14 from '../../app/assets/microempresa-14.jpg'
+import microempresa15 from '../../app/assets/microempresa-15.jpg'
 import { useState } from "react"
-import logo from '@assets/logo.png'
-import styles from './Microempresa.module.css'
+
+const images = [
+  microempresa1,
+  microempresa2,
+  microempresa3,
+  microempresa4,
+  microempresa5,
+  microempresa6,
+  microempresa7,
+  microempresa8,
+  microempresa9,
+  microempresa10,
+  microempresa11,
+  microempresa12,
+  microempresa13,
+  microempresa14,
+  microempresa15
+]
 
 export function Microempresa() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -33,14 +65,19 @@ Faucibus at rutrum maecenas iaculis molestie eros tortor. Maximus eros sociosqu 
       {/* Gallery Grid */}
       <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
         {Array.from({ length: 15 }).map((_, i) => (
-          <div 
-            key={i} 
-            className={`aspect-square bg-[#1C1C1C]/10 rounded-lg ${styles.imageContainer} ${styles[`microempresa${i + 1}`]}`}
-            onClick={() => {
-              setCurrentImageIndex(i);
-              setIsModalOpen(true);
-            }}
-          />
+          <div key={i} className="aspect-square bg-[#1C1C1C]/10 rounded-lg">
+            <Image 
+              src={images[i]}
+              alt="Description"
+              className="aspect-square bg-[#1C1C1C]/10 rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+              width={400}
+              height={400}
+              onClick={() => {
+                setCurrentImageIndex(i);
+                setIsModalOpen(true);
+              }}
+            />
+          </div>
         ))}
       </div>
 
@@ -56,7 +93,7 @@ Faucibus at rutrum maecenas iaculis molestie eros tortor. Maximus eros sociosqu 
             </button>
             <button
               className="text-white text-7xl font-bold hover:text-white/80 transition-colors px-6"
-              onClick={() => setCurrentImageIndex((prevIndex) => (prevIndex - 1 + 15) % 15)}
+              onClick={() => setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)}
             >
               ←
             </button>
@@ -64,13 +101,21 @@ Faucibus at rutrum maecenas iaculis molestie eros tortor. Maximus eros sociosqu 
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin" />
               </div>
-              <div 
-                className={`w-full h-full ${styles.imageContainer} ${styles[`microempresa${currentImageIndex + 1}`]}`}
+              <Image
+                src={images[currentImageIndex]}
+                alt="Modal view"
+                fill
+                className="object-contain"
+                onLoadingComplete={(img) => {
+                  img.classList.remove('opacity-0');
+                  img.classList.add('opacity-100');
+                }}
+                loading="eager"
               />
             </div>
             <button
               className="text-white text-7xl font-bold hover:text-white/80 transition-colors px-6"
-              onClick={() => setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 15)}
+              onClick={() => setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)}
             >
               →
             </button>
