@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import fondo from '@assets/fondo3.jpg'
+//import fondo from '@assets/fondo3.jpg'
 import { FortunaGuanacaste } from "./components/FortunaGuanacaste"
 import { TourVolcan } from "./components/TourVolcan"
 import { Microempresa } from "./components/Microempresa"
