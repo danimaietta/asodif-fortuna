@@ -1,5 +1,5 @@
 import Image from "next/image"
-import logo from '../assets/logo.png'
+import logo from '@assets/logo.png'
 import microempresa1 from '@assets/microempresa-1.jpg'
 import microempresa2 from '@assets/microempresa-2.jpg'
 import microempresa3 from '@assets/microempresa-3.jpg'
