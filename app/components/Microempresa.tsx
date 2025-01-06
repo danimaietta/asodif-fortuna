@@ -1,6 +1,4 @@
-import { useState } from "react"
 import Image from "next/image"
-import { Footer } from "../components/Footer"
 import logo from '../assets/logo.png'
 import microempresa1 from '../assets/microempresa-1.jpg'
 import microempresa2 from '../assets/microempresa-2.jpg'
@@ -17,6 +15,7 @@ import microempresa12 from '../assets/microempresa-12.jpg'
 import microempresa13 from '../assets/microempresa-13.jpg'
 import microempresa14 from '../assets/microempresa-14.jpg'
 import microempresa15 from '../assets/microempresa-15.jpg'
+import { useState } from "react"
 
 const images = [
   microempresa1,
@@ -123,8 +122,6 @@ Faucibus at rutrum maecenas iaculis molestie eros tortor. Maximus eros sociosqu 
           </div>
         </div>
       )}
-
-      <Footer />
     </section>
   )
 } 

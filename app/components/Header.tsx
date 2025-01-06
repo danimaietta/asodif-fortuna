@@ -1,10 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import Image from "next/image"
 import logo from '../assets/logo.png'
+import { useState, useEffect } from "react"
 
-export function Header() {
+interface HeaderProps {
+  selected: string;
+  scrollWindow: (section: string) => () => void;
+}
+
+export function Header({ selected, scrollWindow }: HeaderProps) {
+
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -27,14 +33,41 @@ export function Header() {
             height={100} 
         />
         <div className="flex gap-6">
-          <button className={`font-semibold hover:text-[#FFDF00] transition-all duration-500 ease-in-out transform ${scrollY > 0 ? 'text-lg' : 'text-2xl'}`}>
+          <button 
+            className={`
+              font-semibold hover:text-[#FFDF00] transition-all duration-500 ease-in-out transform 
+              ${scrollY > 0 ? 'text-lg' : 'text-2xl'} 
+              ${selected === 'fortuna' ? 'text-[#FFDF00]' : ''}`}
+            onClick={scrollWindow('fortuna')}
+          >
             Fortuna Guanacaste
           </button>
-          <button className={`font-semibold hover:text-[#FFDF00] transition-all duration-500 ease-in-out transform ${scrollY > 0 ? 'text-lg' : 'text-2xl'}`}>
+          <button 
+            className={`
+              font-semibold hover:text-[#FFDF00] transition-all duration-500 ease-in-out transform 
+              ${scrollY > 0 ? 'text-lg' : 'text-2xl'}
+              ${selected === 'tour' ? 'text-[#FFDF00]' : ''}`}
+            onClick={scrollWindow('tour')}
+          >
             Tour Volcán
           </button>
-          <button className={`font-semibold hover:text-[#FFDF00] transition-all duration-500 ease-in-out transform ${scrollY > 0 ? 'text-lg' : 'text-2xl'}`}>
+          <button 
+            className={`
+              font-semibold hover:text-[#FFDF00] transition-all duration-500 ease-in-out transform 
+              ${scrollY > 0 ? 'text-lg' : 'text-2xl'}
+              ${selected === 'microempresa' ? 'text-[#FFDF00]' : ''}`}
+            onClick={scrollWindow('microempresa')}
+          >
             Microempresa
+          </button>
+          <button 
+            className={`
+              font-semibold hover:text-[#FFDF00] transition-all duration-500 ease-in-out transform 
+              ${scrollY > 0 ? 'text-lg' : 'text-2xl'}
+              ${selected === 'contacto' ? 'text-[#FFDF00]' : ''}`}
+            onClick={scrollWindow('contacto')}
+          >
+            Contacto
           </button>
         </div>
       </div>

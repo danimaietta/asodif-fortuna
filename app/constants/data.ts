@@ -13,4 +13,6 @@ export const tours = [
   { id: 1, title: "Tour 1", description: "Experience the beauty of our volcanic landscapes." },
   { id: 2, title: "Tour 2", description: "Discover hidden gems in the heart of the volcano." },
   { id: 3, title: "Tour 3", description: "Adventure awaits in our thrilling volcano tour." },
-] 
+]
+
+export const HEADER_OPTIONS = ['fortuna', 'tour', 'microempresa', 'contacto']
