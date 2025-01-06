@@ -1,0 +1,84 @@
+.logo {
+  background-image: url('../assets/logo.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.microempresa1 {
+  background-image: url('../assets/microempresa-1.jpg');
+}
+
+.microempresa2 {
+  background-image: url('../assets/microempresa-2.jpg');
+}
+
+.microempresa3 {
+  background-image: url('../assets/microempresa-3.jpg');
+}
+
+.microempresa4 {
+  background-image: url('../assets/microempresa-4.jpg');
+}
+
+.microempresa5 {
+  background-image: url('../assets/microempresa-5.jpg');
+}
+
+.microempresa6 {
+  background-image: url('../assets/microempresa-6.jpg');
+}
+
+.microempresa7 {
+  background-image: url('../assets/microempresa-7.jpg');
+}
+
+.microempresa8 {
+  background-image: url('../assets/microempresa-8.jpg');
+}
+
+.microempresa9 {
+  background-image: url('../assets/microempresa-9.jpg');
+}
+
+.microempresa10 {
+  background-image: url('../assets/microempresa-10.jpg');
+}
+
+.microempresa11 {
+  background-image: url('../assets/microempresa-11.jpg');
+}
+
+.microempresa12 {
+  background-image: url('../assets/microempresa-12.jpg');
+}
+
+.microempresa13 {
+  background-image: url('../assets/microempresa-13.jpg');
+}
+
+.microempresa14 {
+  background-image: url('../assets/microempresa-14.jpg');
+}
+
+.microempresa15 {
+  background-image: url('../assets/microempresa-15.jpg');
+}
+
+.imageContainer {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.imageContainer:hover {
+  transform: scale(1.05);
+}
+
+.modalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+} 
